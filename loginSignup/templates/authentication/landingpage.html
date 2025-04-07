@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Wellness Hub - Landing Page</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      background-color: #fff0f5;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #ffb6c1, #ffa6c9);
+      height: 30vh; /* Reduced height */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ffffff;
+    }
+
+    .features {
+      background-color: #fff5fa;
+      padding: 30px 10px;
+      color: #333;
+    }
+
+    .features h2 {
+      color: #d63384;
+      font-weight: 600;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .feature-cards {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 280px;
+      border: none;
+      border-radius: 15px;
+      background-color: #ffffff;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      color: #ff69b4;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .btn-pink {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-pink:hover {
+      background-color: #ff85c1;
+      color: white;
+    }
+
+    .footer {
+      background-color: #ffb6c1;
+      color: white;
+      padding: 10px 0;
+    }
+
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <h1>Welcome to the Student Wellness Hub</h1>
+      <p>Your mental health matters — track progress, access support, and thrive.</p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features text-center">
+    <div class="container">
+      <h2>How We Help You Thrive</h2>
+      <div class="feature-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">🌈 Mood Tracking</h5>
+            <p class="card-text">
+              Reflect on your day and monitor your emotional wellbeing through simple daily check-ins.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">📅 Appointments</h5>
+            <p class="card-text">
+              Schedule time with counselors or wellness coaches directly through the platform.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">📚 Resources</h5>
+            <p class="card-text">
+              Explore curated articles, meditation guides, and self-help videos for holistic wellness.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pink Log In & Sign Up Buttons -->
+      <div class="mt-4 d-flex justify-content-center gap-3">
+        <a href="/signin" class="btn btn-pink btn-lg">Log In</a>
+        <a href="/signup" class="btn btn-pink btn-lg">Sign Up</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 Student Wellness Hub</p>
+      <div>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms</a> |
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

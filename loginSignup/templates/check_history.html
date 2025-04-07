@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check History</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f2d4dc; /* Match background color */
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .table-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            overflow-x: auto;
+        }
+
+        /* Back Button Style inside the white container */
+        .back-btn {
+            font-size: 0.95rem;
+            color: #a3476d;
+            text-decoration: none;
+            font-weight: 600;
+            background-color: #fbe1ea;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;  /* Space between back button and title */
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background-color: #f6cbdc;
+        }
+
+        .table-container h2 {
+            text-align: center; /* Align the title left */
+            color: #a3476d;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2d4dc;
+            color: #a3476d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Table Container with Back Button inside it -->
+        <div class="table-container">
+            <!-- Back Button inside the white section -->
+            <a href="{% url 'home' %}" class="back-btn">← Back to Home</a>
+            
+            <h2>Appointment History</h2>
+
+            {% if appointments %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                            <tr>
+                                <td>{{ appointment.full_name }}</td>
+                                <td>{{ appointment.date }}</td>
+                                <td>{{ appointment.time }}</td>
+                                <td>{{ appointment.status }}</td>
+                                <td>{{ appointment.notes }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No appointment history available.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+

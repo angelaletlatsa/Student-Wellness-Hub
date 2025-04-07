@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f2d4dc;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto; /* Allow scrolling */
+        }
+  /* Floating background hearts */
+  body::before,
+    body::after {
+      content: "💕";
+      font-size: 6rem;
+      position: absolute;
+      opacity: 0.1;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    body::before {
+      top: 10%;
+      left: 5%;
+    }
+
+    body::after {
+      bottom: 10%;
+      right: 5%;
+    }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .auth-container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .auth-title {
+            font-size: 1.6rem;
+            color: #a3476d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .auth-title::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #a3476d;
+            margin: 8px auto 0;
+            border-radius: 10px;
+        }
+
+        .alert {
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .auth-form .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #a3476d;
+            margin-bottom: 4px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #d17b99;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(209, 123, 153, 0.2);
+        }
+
+        .submit-btn {
+            background-color: #d17b99;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.3s ease-in-out, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #b3476d;
+            transform: scale(1.03);
+        }
+
+        .auth-link {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .auth-link a {
+            color: #a3476d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #a3476d;
+            text-decoration: none;
+            font-weight: 600;
+            background-color: #fbe1ea;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        .back-btn:hover {
+            background-color: #f6cbdc;
+        }
+
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <a href="/" class="back-btn">← Back</a> <!-- This takes user to landing page -->
+
+        <h3 class="auth-title">Sign Up</h3>
+
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        <form class="auth-form" action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Create a username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Enter your first name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Enter your last name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pass1">Password</label>
+                <input type="password" id="pass1" name="pass1" placeholder="Create a password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pass2">Confirm Password</label>
+                <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+
+        <div class="auth-link">
+            Already have an account? <a href="/signin">Login</a>
+        </div>
+    </div>
+</body>
+</html>

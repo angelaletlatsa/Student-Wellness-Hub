@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mental Health Hub</title>
+    <!-- Load static files -->
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+
+    <!-- Back Button (Top Left) -->
+    <div class="back-btn-container">
+        <a href="{% url 'home' %}" class="back-btn">← Back to Home</a>
+    </div>
+
+    <!-- About Section -->
+    <div class="container mt-5">
+        <h1 class="text-center display-4 text-pink">About the Mental Health Hub</h1>
+        <p class="lead text-center mt-4 text-muted">Our mission is to provide students with the tools and support they need to manage their mental well-being effectively.</p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="section-title">What We Offer</h3>
+                <p>The Mental Health Hub is a platform designed to help students take control of their mental health. We provide a variety of services aimed at improving overall well-being, such as:</p>
+                <ul class="list-unstyled">
+                    <li>Personalized appointment scheduling with mental health professionals.</li>
+                    <li>A mood tracker to monitor emotional states.</li>
+                    <li>Wellness tips and advice tailored to students' needs.</li>
+                    <li>Confidential support for students dealing with stress, anxiety, and other challenges.</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <h3 class="section-title">Why It Matters</h3>
+                <p>College life can be overwhelming, and students often face challenges that affect their mental well-being. Our platform helps students manage stress, track their moods, and maintain a balanced life. By offering easy access to support and resources, we aim to make mental health a priority and create a safe space for students to reach out when they need help.</p>
+            </div>
+        </div>
+
+        <div class="mt-5 text-center">
+            <h4 class="text-secondary">Join the Mental Health Hub Today and Take the First Step Toward Better Mental Health</h4>
+        </div>
+    </div>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f2d4dc; /* Matching your app's theme */
+            margin: 0;
+            padding: 0;
+        }
+
+        .back-btn-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-btn {
+            display: inline-block;
+            font-size: 1rem;
+            color: #a3476d;
+            text-decoration: none;
+            font-weight: 600;
+            background-color: #fbe1ea;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #f6cbdc;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #a3476d;
+            margin-top: 40px;
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 0 15px;
+        }
+
+        h1 {
+            font-weight: 600;
+            color: #ff6f91; /* Title in pink */
+        }
+
+        p.lead {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        ul.list-unstyled li {
+            font-size: 1.1rem;
+            color: #5a5a5a;
+            padding: 6px 0;
+        }
+
+        .row {
+            margin-top: 40px;
+        }
+
+        .col-md-6 {
+            margin-bottom: 30px;
+        }
+
+        .mt-5 {
+            margin-top: 50px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+    </style>
+</body>
+</html>

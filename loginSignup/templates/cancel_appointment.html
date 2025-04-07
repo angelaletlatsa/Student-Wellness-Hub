@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel Appointment</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            background-color: #f2d4dc;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #a3476d;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .appointment-card {
+            background-color: #fbe1ea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .appointment-info {
+            font-size: 1rem;
+        }
+
+        .cancel-btn {
+            background-color: #d17b99;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .cancel-btn:hover {
+            background-color: #b3476d;
+        }
+
+        .back-btn {
+            display: inline-block;
+            font-size: 0.95rem;
+            color: #a3476d;
+            text-decoration: none;
+            font-weight: 600;
+            background-color: #f6cbdc;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #f4b4c6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'home' %}" class="back-btn">← Back to Home</a>
+
+        <h2>Your Appointments</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% for appointment in appointments %}
+            <div class="appointment-card">
+                <div class="appointment-info">
+                    <strong>{{ appointment.full_name }}</strong><br>
+                    Date: {{ appointment.date }} | Time: {{ appointment.time }}<br>
+                    {% if appointment.notes %}Notes: {{ appointment.notes }}{% endif %}
+                </div>
+                <form method="POST" action="{% url 'cancel_appointment' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                    <button type="submit" class="cancel-btn">Cancel</button>
+                </form>
+            </div>
+        {% empty %}
+            <p>No appointments found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

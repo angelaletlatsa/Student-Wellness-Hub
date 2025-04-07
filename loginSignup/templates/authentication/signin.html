@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f2d4dc;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Floating background hearts */
+    body::before,
+    body::after {
+      content: "💕";
+      font-size: 6rem;
+      position: absolute;
+      opacity: 0.1;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    body::before {
+      top: 10%;
+      left: 5%;
+    }
+
+    body::after {
+      bottom: 10%;
+      right: 5%;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .auth-container {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+      position: relative;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .auth-title {
+      font-size: 2rem;
+      color: #a3476d;
+      margin-bottom: 20px;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .auth-title::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: #a3476d;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }
+
+    .alert {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .alert-success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .alert-error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .auth-form .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      color: #a3476d;
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #d17b99;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(209, 123, 153, 0.2);
+    }
+
+    .submit-btn {
+      background-color: #d17b99;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background-color 0.3s ease-in-out, transform 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #b3476d;
+      transform: scale(1.03);
+    }
+
+    .auth-link {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .auth-link a {
+      color: #a3476d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .auth-link a:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      font-size: 0.95rem;
+      color: #a3476d;
+      text-decoration: none;
+      font-weight: 600;
+      background-color: #fbe1ea;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: background 0.3s ease;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #f6cbdc;
+    }
+
+    /* Make username, password, and back more bold */
+    .form-group label, 
+    .form-group input, 
+    .back-btn {
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      .auth-container {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <a href="javascript:history.back()" class="back-btn">← Back</a>
+
+    <h3 class="auth-title">Login</h3>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+
+    <form class="auth-form" action="/signin/" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required />
+      </div>
+
+      <div class="form-group">
+        <label for="pass1">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required />
+      </div>
+
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <div class="auth-link">
+      Don't have an account? <a href="/signup">Register</a>
+    </div>
+  </div>
+</body>
+</html>

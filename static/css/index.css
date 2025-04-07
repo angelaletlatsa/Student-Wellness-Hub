@@ -1,0 +1,105 @@
+/* General Page Layout */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern font for continuity */
+    background-color: #f3f0fa; /* Light purple to match the login page */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #440869; /* Keeping the purple tone consistent */
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #6c42a9; /* Slightly lighter purple */
+}
+
+/* Hero Section */
+.container h1 {
+    font-size: 2.8rem;
+    color: #330653; /* Strong purple */
+    margin-bottom: 20px;
+    text-align: center;
+}
+.container p {
+    font-size: 1.2rem;
+    color: #4f2566; /* Subtle purple tone */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Cards */
+.card {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff; /* Clean white background for cards */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+.card-body {
+    background-color: #f3f0fa; /* Matches the overall background */
+    text-align: center;
+    padding: 20px;
+}
+.card-title {
+    font-size: 1.4rem;
+    color: #330653;
+    margin-bottom: 15px;
+}
+.card-text {
+    font-size: 1.1rem;
+    color: #4f2566;
+}
+.btn {
+    background-color: #6c42a9; /* Vibrant purple for buttons */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px; /* Slightly rounded buttons for a clean look */
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background-color: #502d7e; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .card {
+        width: 100%;
+    }
+    .container h1 {
+        font-size: 2.5rem;
+    }
+    .container p {
+        font-size: 1rem;
+    }
+}
+

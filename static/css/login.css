@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif; /* Clean and user-friendly font */
+    background-color: #f3dff5;  /* Light blue background for subtle style */
+    margin: 0;
+    padding: 0;
+}
+
+/* Auth Container */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #ffffff; /* White container for contrast */
+    border-radius: 12px; /* Slightly rounded edges for a modern feel */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Gentle shadow for depth */
+    padding: 25px;
+}
+
+/* Title */
+.auth-title {
+    text-align: center;
+    font-size: 26px;
+    color: #003f7e; /* Deep blue for text contrast */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 12px;
+    border-radius: 8px; /* Rounded alerts */
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for polished look */
+}
+
+/* Alert Styles Based on Tags */
+.alert-success {
+    background-color: #d4edda; /* Soft green */
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da; /* Soft red */
+    color: #721c24;
+}
+
+/* Form Styles */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounded input fields */
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #00509e;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 80, 158, 0.5); /* Blue glow effect */
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #00509e; /* Deep blue button */
+    color: #ffffff;
+    border: none;
+    border-radius: 20px; /* Fully rounded button */
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth interaction effects */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.submit-btn:hover {
+    background-color: #003f7e; /* Darker blue on hover */
+    transform: scale(1.03); /* Slight zoom effect for interactivity */
+}
+
+/* Auth Link */
+.auth-link {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.auth-link a {
+    color: #00509e; /* Blue links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-link a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+/* Mobile-Friendly Adjustments */
+@media screen and (max-width: 768px) {
+    .auth-container {
+        padding: 20px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
